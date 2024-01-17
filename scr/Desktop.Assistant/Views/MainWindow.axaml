@@ -4,13 +4,14 @@
         xmlns:vm="using:Desktop.Assistant.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        Width="400" Height="700"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"     
+        Width="880"
+        Height="500"
         CanResize="False"
         x:Class="Desktop.Assistant.Views.MainWindow"
-        WindowStartupLocation="Manual"
+        WindowStartupLocation="CenterScreen"
         Icon="/Assets/avalonia-logo.ico"
-        Title="许泽宇的技术分享"
+        Title="AI助手"
         >
   <rxui:RoutedViewHost Router="{Binding Router}" Margin="0,0,0,0">
   </rxui:RoutedViewHost>

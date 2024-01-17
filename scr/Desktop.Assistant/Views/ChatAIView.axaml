@@ -1,0 +1,147 @@
+<UserControl
+    x:Class="Desktop.Assistant.Views.ChatAIView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:Desktop.Assistant.Controls;assembly=Desktop.Assistant"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+    xmlns:material="using:Material.Icons.Avalonia"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:Desktop.Assistant.Models;assembly=Desktop.Assistant"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="models:TextMessage">
+            <c:ChatBubble IsRead="True" Role="{Binding Role}">
+                <TextBlock Text="{Binding Content}" TextWrapping="Wrap" />
+            </c:ChatBubble>
+        </DataTemplate>
+        <DataTemplate DataType="models:ImageMessage">
+            <c:ChatBubble IsRead="{Binding IsRead}" Role="{Binding Role}">
+                <Image Source="{Binding Content}" />
+            </c:ChatBubble>
+        </DataTemplate>
+        <DataTemplate DataType="models:LinkMessage">
+            <c:ChatBubble IsRead="{Binding IsRead}" Role="{Binding Role}">
+                <Button Background="Transparent" Content="{Binding Content}" />
+            </c:ChatBubble>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" MaxWidth="260" />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+        <!--  消息列表  -->
+        <StackPanel MaxWidth="250" Margin="10">
+            <Button Content="新建对话" FontWeight="Normal" />
+            <ListBox Margin="0,5,0,0">
+                <ListBoxItem
+                    Height="40"
+                    Margin="0,5,0,0"
+                    VerticalContentAlignment="Center">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <material:MaterialIcon Kind="ChatProcessingOutline" />
+                            <TextBlock Margin="4,0,0,0" Text="123" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+                <ListBoxItem
+                    Height="40"
+                    Margin="0,5,0,0"
+                    VerticalContentAlignment="Center">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <material:MaterialIcon Kind="ChatProcessingOutline" />
+                            <TextBlock Margin="4,0,0,0" Text="123" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+                <ListBoxItem
+                    Height="40"
+                    Margin="0,5,0,0"
+                    VerticalContentAlignment="Center">
+                    <ListBoxItem.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <material:MaterialIcon Kind="ChatProcessingOutline" />
+                            <TextBlock Margin="4,0,0,0" Text="233" />
+                        </StackPanel>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+            </ListBox>
+        </StackPanel>
+
+        <!--  分割线  -->
+        <Border
+            Grid.Column="1"
+            Width="1"
+            Background="{DynamicResource SemiGrey1}" />
+
+        <!--  聊天ChatBox  -->
+        <Grid Grid.Column="2" RowDefinitions="*, Auto">
+            <!--  聊天消息框  -->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <ItemsControl ItemsSource="{Binding Messages}" />
+            </ScrollViewer>
+
+            <!--  发送消息框  -->
+            <Border
+                Grid.Row="1"
+                Margin="20"
+                Padding="5"
+                Background="{DynamicResource SemiGrey1}"
+                CornerRadius="5">
+                <Grid ColumnDefinitions="Auto, *,Auto">
+                    <Button
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding DictateMessageCommand}"
+                        Content="{material:MaterialIconExt Microphone,
+                                                           Size=25}"
+                        Foreground="{DynamicResource SemiColorText2}" />
+
+                    <TextBox
+                        x:Name="InputText"
+                        Grid.Column="1"
+                        Height="100"
+                        Classes="ChatMessageComposer"
+                        Text="{Binding NewMessageContent}"
+                        TextWrapping="WrapWithOverflow"
+                        Watermark="发送点什么...">
+                        <i:Interaction.Behaviors>
+                            <c:KeyBindingBehavior Key="Enter" Command="{Binding EnterKeyPressedCommand}" />
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+
+                    <Border
+                        Grid.Column="2"
+                        Margin="0,0,0,0"
+                        Padding="5"
+                        Background="{DynamicResource SemiGrey1}"
+                        CornerRadius="0,5,5,0">
+                        <Button
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            Classes="IconButton"
+                            Command="{Binding SendMessageCommand}"
+                            Content="{material:MaterialIconExt Send,
+                                                               Size=25}" />
+
+                    </Border>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Grid>
+</UserControl>

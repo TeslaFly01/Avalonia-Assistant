@@ -1,0 +1,89 @@
+﻿<Style
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:material="using:Material.Icons.Avalonia"
+    xmlns:sys="clr-namespace:System;assembly=netstandard">
+    <Style Selector="ListBoxItem.Menu">
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+        <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border
+                        x:Name="Bd"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                        <Grid>
+                            <Border
+                                x:Name="BdSelected"
+                                Width="2.8"
+                                Height="20"
+                                HorizontalAlignment="Left"
+                                Background="{DynamicResource SemiColorPrimary}"
+                                CornerRadius="1"
+                                IsVisible="False" />
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="ListBoxItem.Menu:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SemiColorFill1}" />
+    </Style>
+    <Style Selector="ListBoxItem.Menu:selected">
+        <Setter Property="Background" Value="{DynamicResource SemiColorFill1}" />
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+    </Style>
+    <Style Selector="ListBoxItem.Menu:selected /template/ ContentPresenter#PART_ContentPresenter material|MaterialIcon">
+        <Setter Property="Kind" Value="ChatProcessing" />
+    </Style>
+    <!--<Style Selector="ListBoxItem.Menu:selected material|MaterialIcon">
+        <Setter Property="Kind" Value="ChatProcessing" />
+    </Style>-->
+    <Style Selector="ListBoxItem.Menu:selected /template/ Border#BdSelected">
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+    <Style Selector="ListBoxItem.Menu TextBlock">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Margin" Value="0 3 0 0" />
+    </Style>
+    <Style Selector="Button.Menu">
+        <Setter Property="Background" Value="{DynamicResource SemiColorBackground0}" />
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="CornerRadius" Value="5" />
+    </Style>
+    <Style Selector="Button.Menu:pointerover">
+        <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+    </Style>
+    <Style Selector="ToggleSwitch.Menu">
+      <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="Foreground" Value="{DynamicResource SemiColorText2}" />
+      <Setter Property="Margin" Value="0 0 0 4" />
+      <Setter Property="Height" Value="50" />
+    </Style>
+    <Style Selector="ToggleSwitch.Menu:pointerover">
+      <Setter Property="Foreground" Value="{DynamicResource SemiColorPrimary}" />
+      <Setter Property="Background" Value="Transparent"></Setter>
+    </Style>
+</Style>

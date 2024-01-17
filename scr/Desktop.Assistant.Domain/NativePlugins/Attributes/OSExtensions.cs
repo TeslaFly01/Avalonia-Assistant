@@ -17,11 +17,10 @@ namespace Desktop.Assistant.Domain.NativePlugins.Attributes
         /// <param name="kernel"></param>
         public static void ImportPluginFromObjectByOs(Kernel kernel)
         {
-
             //kernel.ImportPluginFromObject(new SystemPlugin(), "WindowsPlugin");
             //kernel.ImportPluginFromObject(new ChromePlugin(), "ChromePlugin");
             //kernel.ImportPluginFromObject(new ComputerPlugin(), "ComputerPlugin");
-            string[] assemblies = ["Desktop.Assistant.Domain"];
+            string[] assemblies = new string[] { "Desktop.Assistant.Domain" };
             Type attributeType = typeof(OSAttribute);
             foreach (var item in assemblies)
             {

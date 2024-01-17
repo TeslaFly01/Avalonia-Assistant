@@ -13,9 +13,16 @@ namespace Desktop.Assistant.Views
         public MainWindow()
         {
             InitializeComponent();
+            // 订阅消息
+            MessageBus.Current.Listen<object>()
+                .Subscribe(_ =>
+                {
+                    var setWindow = new SettingWindow();
+                    setWindow.ShowDialog(this);
+                });
 
             // 订阅窗体打开事件
-            this.Opened += OnOpened;
+            //this.Opened += OnOpened;
         }
 
         private void InitializeComponent()

@@ -131,8 +131,11 @@
     <Setter Property="VerticalContentAlignment" Value="Center"/>
   </Style>
 
-  <Style Selector="TextBox.ChatMessageComposer:pointerover /template/ Border#PART_BorderElement">
+  <!--<Style Selector="TextBox.ChatMessageComposer:pointerover /template/ Border#PART_BorderElement">
     <Setter Property="BorderBrush" Value="Transparent"/>
+    <Setter Property="Background" Value="Transparent" />
+  </Style>-->
+  <Style Selector="TextBox.ChatMessageComposer:pointerover /template/ Border#PART_ContentPresenterBorder">
     <Setter Property="Background" Value="Transparent" />
   </Style>
 

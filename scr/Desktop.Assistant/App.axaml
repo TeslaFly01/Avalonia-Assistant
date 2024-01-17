@@ -10,6 +10,8 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
+        <StyleInclude Source="avares://Material.Icons.Avalonia/MaterialIconStyles.axaml" />
         <StyleInclude Source="/Styles/Accents.axaml"/>
         <StyleInclude Source="/Styles/MessageComposer.axaml"/>
         <StyleInclude Source="/Styles/ChatBubble.axaml"/>

@@ -17,10 +17,10 @@ namespace Desktop.Assistant.ViewModels
 
         public IScreen HostScreen { get; }
 
-        public ViewModelBase(RoutingState router)
+        public ViewModelBase(RoutingState router, IScreen screen = null)
         {
             Router = router;
-            HostScreen = Locator.Current.GetService<IScreen>();
+            HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             UrlPathSegment = this.GetType().Name.Replace("ViewModel", "");            
 
             Activator = new ViewModelActivator();

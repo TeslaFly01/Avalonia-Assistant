@@ -1,0 +1,68 @@
+<Window
+    x:Class="Desktop.Assistant.Views.SettingWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="配置OpenAI参数"
+    Width="500"
+    Height="300"
+    d:DesignHeight="330"
+    d:DesignWidth="550"
+    CanResize="False"
+    Icon="/Assets/avalonia-logo.ico"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+    <Window.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Margin" Value="0 18 0 0" />
+        </Style>
+    </Window.Styles>
+    <Grid RowDefinitions="*,40">
+        <!--  内容栏  -->
+        <StackPanel Margin="60,0,60,0" VerticalAlignment="Center">
+            <TextBox
+                Classes="clearButton"
+                InnerLeftContent="Endpoint:"
+                Text="{Binding Endpoint}"
+                Watermark="例如：https://api.openai.com/" />
+            <TextBox
+                MinWidth="170"
+                Classes="clearButton"
+                InnerLeftContent="SecretKey:"
+                PasswordChar="*"
+                Text="{Binding Key}" />
+            <TextBox
+                MinWidth="170"
+                Classes="clearButton"
+                InnerLeftContent="Model:"
+                Text="{Binding Model}" />
+        </StackPanel>
+
+        <!--  操作栏  -->
+        <Grid
+            Grid.Row="1"
+            Height="40"
+            Margin="0,0,0,10"
+            VerticalAlignment="Bottom">
+            <Button
+                Height="28"
+                Margin="0,0,120,0"
+                Padding="25,0"
+                HorizontalAlignment="Right"
+                Classes="Primary"
+                Command="{Binding SaveCommand}"
+                Content="保存"
+                Theme="{DynamicResource SolidButton}" />
+            <Button
+                Height="28"
+                Margin="0,0,20,0"
+                Padding="25,0"
+                Command="{Binding CancelCommand}"
+                HorizontalAlignment="Right"
+                Classes="Tertiary"
+                Content="取消" />
+        </Grid>
+    </Grid>
+</Window>

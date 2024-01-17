@@ -35,7 +35,7 @@ namespace Desktop.Assistant
                     break;
                 case ISingleViewApplicationLifetime singleView:
                     Register();
-                    singleView.MainView = new MainView();
+                    singleView.MainView = new MainView { DataContext = new MainWindowViewModel() };
                     break;
             }        
             // Create the AutoSuspendHelper.         
